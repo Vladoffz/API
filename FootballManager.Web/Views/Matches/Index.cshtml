@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Models.MatchDTO>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Matches</h1>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search by MatchID: <input type="text" name="MatchID" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Show all</a>
+        </p>
+    </div>
+</form>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search by Result: <input type="text" name="Result" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Show all</a>
+        </p>
+    </div>
+</form>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search by Date: <input type="text" name="Date" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Show all</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+    <tr>
+        <th>MatchID</th>
+        <th>Result</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.MatchID)</td>
+            <td>@Html.DisplayFor(modelItem => item.Result)</td>
+            <td>
+                <a asp-action="Create" asp-route-id="@item.MatchID">Create</a>  |
+                <a asp-action="Update" asp-route-id="@item.MatchID">Update</a>  |
+                <a asp-action="Delete" asp-route-id="@item.MatchID">Delete</a>
+            </td>
+        </tr>
+    }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Result)</td>
+            <td>@Html.DisplayFor(modelItem => item.MatchID)</td>
+            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+        </tr>
+    }
+    </tbody>
+</table>

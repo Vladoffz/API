@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Models.ChampionshipCommandDTO>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Championship Commands</h1>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search by Name: <input type="text" name="Name" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Show all</a>
+        </p>
+    </div>
+</form>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search by Commands: <input type="text" name="Commands" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Show all</a>
+        </p>
+    </div>
+</form>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search by Championship: <input type="text" name="Championship" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Show all</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>CommandID</th>
+        <th>ChampionshipID</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.CommandID)</td>
+            <td>@Html.DisplayFor(modelItem => item.ChampionshipID)</td>
+            <td>
+                <a asp-action="Create" asp-route-id="@item.ChampionshipCommandID">Create</a>  |
+                <a asp-action="Update" asp-route-id="@item.ChampionshipCommandID">Update</a>  |
+                <a asp-action="Delete" asp-route-id="@item.ChampionshipCommandID">Delete</a>
+            </td>
+        </tr>
+    }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Commands)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Championship)</td>
+        </tr>
+    }
+    </tbody>
+</table>

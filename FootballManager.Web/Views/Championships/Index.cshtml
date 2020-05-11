@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Models.ChampionshipDTO>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Commands</h1>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search by Name: <input type="text" name="Name" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Show all</a>
+        </p>
+    </div>
+</form>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search by ID: <input type="text" name="CommandID" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Show all</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.ID)</td>
+                <td>
+                    <a asp-action="Create" asp-route-id="@item.ID">Create</a>  |
+                    <a asp-action="Update" asp-route-id="@item.ID">Update</a>  |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.ID)</td>
+            </tr>
+        }
+    </tbody>
+</table>

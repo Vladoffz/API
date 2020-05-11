@@ -1,0 +1,31 @@
+﻿@model Models.ChampionshipCommandDTO
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Championship Commands</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CommandID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CommandID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChampionshipID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChampionshipID)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ChampionshipCommandID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
